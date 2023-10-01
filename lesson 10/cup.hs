@@ -3,6 +3,8 @@ aCup = cupConstructor 500
 
 getMl aCup = aCup (\ml -> ml) 
 
+isEmptyCup aCup = getMl aCup == 0
+
 dobuleSuzeCup oldCup = cupConstructor (ml * 2) 
     where ml = getMl oldCup
 

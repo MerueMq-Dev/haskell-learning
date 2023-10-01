@@ -1,6 +1,7 @@
 robotConstructor (name, attack, hp) = (\message -> message (name, attack, hp))
 
 killerRobot = robotConstructor ("killer", 25, 200)
+
 name (n, _, _) = n 
 attack (_,a,_) = a
 hp (_, _, hp) = hp
@@ -44,3 +45,21 @@ fastRobotRound2 = fight slowRobotRound1 fastRobotRound1
 slowRobotRound2 = fight fastRobotRound1 slowRobotRound1
 fastRobotRound3 = fight slowRobotRound2 fastRobotRound2
 slowRobotRound3 = fight fastRobotRound2 slowRobotRound2
+
+mapRobots aRobot = getHp aRobot  
+
+getRobotsHp robots = map mapRobots robots
+
+-- threeRoundFight robotA robotB = fight robotA robotB (\robotB ) 
+
+-- resultFigth = threeRoundFight catRobot dogRobot
+catRobot = robotConstructor ("cat", 10, 100)
+dogRobot = robotConstructor ("dog", 15, 150)
+
+robots = [killerRobot, catRobot, dogRobot]
+
+dragonRobot = robotConstructor("dragon",200, 1000)
+
+figthWithDragonRobot = fight dragonRobot
+
+afterFigthWithDragon = map (\r -> getHp r) $ map (\r -> figthWithDragonRobot r) robots 
